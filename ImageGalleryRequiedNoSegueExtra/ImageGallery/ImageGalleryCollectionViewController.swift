@@ -47,6 +47,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         flowLayout?.invalidateLayout()
     }
     
@@ -162,7 +163,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
                                                     as? ImageCollectionViewCell,
             let image = itemCell.imageGallery.image {
             let dragItem = UIDragItem(itemProvider: NSItemProvider(object: image))
-            dragItem.localObject = imageGallery.images[indexPath.item]
+            dragItem.localObject = indexPath.item//imageGallery.images[indexPath.item]
             return [dragItem]
         } else {
             return []
