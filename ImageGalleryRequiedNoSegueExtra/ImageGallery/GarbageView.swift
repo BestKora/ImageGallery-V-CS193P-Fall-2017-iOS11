@@ -87,7 +87,6 @@ class GarbageView: UIView, UIDropInteractionDelegate {
                         indexPaths += [indexPath]
                     }
                 }
-                print ( indexes,indexPaths.count, indexes.count)
                 collection.performBatchUpdates({
                     collection.deleteItems(at: indexPaths)
                     (collection.dataSource as? ImageGalleryCollectionViewController)?.imageGallery.images = images

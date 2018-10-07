@@ -11,7 +11,13 @@ import UIKit
 class ImageGalleryCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDropDelegate, UICollectionViewDragDelegate {
     
      // MARK: - Public API, Model
-    var imageGallery = ImageGallery(name: "tt")
+    var imageGallery = ImageGallery(name: "tt"){
+        didSet {
+            if !(imageGallery === oldValue) {
+                collectionView?.reloadData()
+            }
+        }
+    }
     
      // MARK: - Live cycle methods
     
@@ -28,6 +34,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         flowLayout?.invalidateLayout()
     }
     
@@ -152,7 +159,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
     
     // MARK: UICollectionViewDropDelegate
     
-    func collectionView(_ collectionView: UICollectionView,
+   func collectionView(_ collectionView: UICollectionView,
                        canHandle session: UIDropSession) -> Bool {
         let isSelf = (session.localDragSession?.localContext as?
                                      UICollectionView) == collectionView
@@ -163,7 +170,8 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
                    session.canLoadObjects(ofClass: UIImage.self)
         }
     }
-    
+ 
+ 
     func collectionView(_ collectionView: UICollectionView,
             dropSessionDidUpdate session: UIDropSession,
             withDestinationIndexPath destinationIndexPath: IndexPath?

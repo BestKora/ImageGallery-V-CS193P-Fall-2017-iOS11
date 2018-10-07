@@ -11,7 +11,13 @@ import UIKit
 class ImageGalleryCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDropDelegate, UICollectionViewDragDelegate {
     
      // MARK: - Public API, Model
-    var imageGallery = ImageGallery(name: "tt")
+    var imageGallery = ImageGallery(name: "tt"){
+        didSet {
+            if !(imageGallery === oldValue) {
+                collectionView?.reloadData()
+            }
+        }
+    }
     
      // MARK: - Live cycle methods
     
