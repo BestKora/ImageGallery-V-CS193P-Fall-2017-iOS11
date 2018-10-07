@@ -208,7 +208,6 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
                                 reuseIdentifier: "DropPlaceholderCell"
                         )
                 )
-           
                 var imageURLLocal: URL?
                 var aspectRatioLocal: Double?
                 
@@ -218,7 +217,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
                     DispatchQueue.main.async {
                         if let image = provider as? UIImage {
                             aspectRatioLocal = Double(image.size.width) /
-                                Double(image.size.height)
+                                 Double(image.size.height)
                         }
                     }
                 }
