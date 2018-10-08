@@ -31,9 +31,10 @@ class ImageGalleryCollectionViewController: UICollectionViewController,UICollect
         )
     }
     
-    var garbageView =  GarbageView()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let garbageView =  GarbageView()
         
         if let trashBounds = navigationController?.navigationBar.bounds {
             garbageView.frame = CGRect(x: trashBounds.size.width*0.6,
